@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table Row Manager</title>
+</head>
+<body>
+
+<table id="sampleTable" border="1">
+  <tr>
+    <td>Row1 Col1</td>
+    <td>Row1 Col2</td>
+</tr>
+  <tr><td>Row2 Col1</td>
+    <td>Row2 Col2</td>
+</tr>
+  <tr><td>Row3 Col1</td>
+    <td>Row3 Col2</td>
+</tr>
+  <tr><td>Row4 Col1</td>
+    <td>Row4 Col2</td>
+</tr>
+  <tr><td>Row5 Col1</td>
+    <td>Row5 Col2</td>
+</tr>
+</table>
+
+<br>
+<button onclick="insertRow()">Insert row</button>
+<button onclick="deleteRow()">Delete row</button>
+<p id="message" style="font-weight:bold;"></p>
+
+<script>
+    // Function to insert a new row at the end of the table
+function insertRow() {
+  const table = document.getElementById("sampleTable"); // Get the table
+  const newRowNum = table.rows.length + 1;// New row number 
+  const row = table.insertRow(-1); // Insert row at the end
+  row.insertCell(0).textContent = `Row${newRowNum} Col1`; // First cell content
+  row.insertCell(1).textContent = `Row${newRowNum} Col2`; // 2nd cell content
+  document.getElementById("message").textContent = ""; // clear previous message
+}
+
+function deleteRow() { // Function to delete a row
+  const table = document.getElementById("sampleTable"); // Get the table
+  if (table.rows.length > 0) {
+    table.deleteRow(0); //Delete the 1st row
+    if (table.rows.length === 0) {
+      document.getElementById("message").textContent = "Message: No more rows to delete";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
